@@ -19,9 +19,25 @@ object MigrateTable extends App {
   var keyspace              = conf.get("spark.dse.cluster.migration.keyspace", null)
   var table                 = conf.get("spark.dse.cluster.migration.table", null)
   var newTableFlag          = conf.get("spark.dse.cluster.migration.newtableflag", "false").toBoolean
+  var fromuser              = conf.get("spark.dse.cluster.migration.fromuser", null)
+  var frompassword          = conf.get("spark.dse.cluster.migration.frompassword", null)
+  var touser                = conf.get("spark.dse.cluster.migration.touser", null)
+  var topassword            = conf.get("spark.dse.cluster.migration.topassword", null)
 
-  val connectorToClusterOne = CassandraConnector(sc.getConf.set("spark.cassandra.connection.host", clusterHostOne))
-  val connectorToClusterTwo = CassandraConnector(sc.getConf.set("spark.cassandra.connection.host", clusterHostTwo))
+  var connectorToClusterOne : CassandraConnector = _ ;
+  var connectorToClusterTwo : CassandraConnector  = _;
+
+  if (fromuser != null && frompassword!= null) {
+    connectorToClusterOne = CassandraConnector(sc.getConf.set("spark.cassandra.connection.host", clusterHostOne).set("spark.cassandra.auth.username", fromuser).set("spark.cassandra.auth.password", frompassword))
+  }else{
+    connectorToClusterOne = CassandraConnector(sc.getConf.set("spark.cassandra.connection.host", clusterHostOne))
+  }
+  if (touser != null && topassword!= null) {
+    connectorToClusterOne = CassandraConnector(sc.getConf.set("spark.cassandra.connection.host", clusterHostOne).set("spark.cassandra.auth.username", touser).set("spark.cassandra.auth.password", topassword))
+  }else{
+    connectorToClusterTwo = CassandraConnector(sc.getConf.set("spark.cassandra.connection.host", clusterHostTwo))
+  }
+
 
   val rddFromClusterOne = {
     // Sets connectorToClusterOne as default connection for everything in this code block
