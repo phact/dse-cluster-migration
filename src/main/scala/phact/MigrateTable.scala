@@ -18,6 +18,7 @@ object MigrateTable extends App {
   var clusterHostTwo        = conf.get("spark.dse.cluster.migration.toClusterHost", null)
   var keyspace              = conf.get("spark.dse.cluster.migration.keyspace", null)
   var table                 = conf.get("spark.dse.cluster.migration.table", null)
+  var newTableFlag          = conf.get("spark.dse.cluster.migration.newtableflag", "false").toBoolean
 
   val connectorToClusterOne = CassandraConnector(sc.getConf.set("spark.cassandra.connection.host", clusterHostOne))
   val connectorToClusterTwo = CassandraConnector(sc.getConf.set("spark.cassandra.connection.host", clusterHostTwo))
@@ -31,8 +32,10 @@ object MigrateTable extends App {
   {
     //Sets connectorToClusterTwo as the default connection for everything in this code block
     implicit val c = connectorToClusterTwo
-    rddFromClusterOne.saveToCassandra(keyspace,table)
+    if (newTableFlag) {
+      rddFromClusterOne.saveAsCassandraTable(keyspace, table)
+    } else {
+      rddFromClusterOne.saveToCassandra(keyspace, table)
+    }
   }
-
-
 }
