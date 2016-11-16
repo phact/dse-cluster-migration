@@ -33,7 +33,7 @@ object MigrateTable extends App {
     connectorToClusterOne = CassandraConnector(sc.getConf.set("spark.cassandra.connection.host", clusterHostOne))
   }
   if (touser != null && topassword!= null) {
-    connectorToClusterTwo = CassandraConnector(sc.getConf.set("spark.cassandra.connection.host", clusterHostOne).set("spark.cassandra.auth.username", touser).set("spark.cassandra.auth.password", topassword))
+    connectorToClusterTwo = CassandraConnector(sc.getConf.set("spark.cassandra.connection.host", clusterHostTwo).set("spark.cassandra.auth.username", touser).set("spark.cassandra.auth.password", topassword))
   }else{
     connectorToClusterTwo = CassandraConnector(sc.getConf.set("spark.cassandra.connection.host", clusterHostTwo))
   }
