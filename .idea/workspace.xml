@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd1951cb-9973-4ad0-bd6d-5c58c0e944f9" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build.sbt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/phact/MigrateTable.scala" afterPath="$PROJECT_DIR$/src/main/scala/phact/MigrateTable.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.startup/hugo" afterPath="$PROJECT_DIR$/.startup/hugo" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docsrc/nohup.out" afterPath="$PROJECT_DIR$/docsrc/nohup.out" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
