@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.apache.directory.server:apacheds-i18n:2.0.0-M21">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/directory/server/apacheds-i18n/2.0.0-M21/apacheds-i18n-2.0.0-M21.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/directory/server/apacheds-i18n/2.0.0-M21/apacheds-i18n-2.0.0-M21-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/directory/server/apacheds-i18n/2.0.0-M21/apacheds-i18n-2.0.0-M21-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

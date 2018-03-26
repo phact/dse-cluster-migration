@@ -4,7 +4,7 @@ This spark job will move a table from one datastax cluster to another
 
 ###Build:
 
-    sbt package
+    mvn package
 
 ###RUN:
 To run in interactive mode:

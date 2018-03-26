@@ -1,18 +1,21 @@
 package phact 
 
 import com.datastax.spark.connector._
-import com.datastax.spark.connector.cql._
-import org.apache.spark.{SparkConf, SparkContext}
+import com.datastax.spark.connector.cql.CassandraConnector
+import org.apache.spark.sql.{SaveMode, SparkSession}
+import org.apache.spark.sql.cassandra._
 
 // For DSE it is not necessary to set connection parameters for spark.master (since it will be done
 // automatically)
 object MigrateTable extends App {
 
-  val conf = new SparkConf()
-      .setAppName("dse-cluster-migration")
+  val spark = SparkSession.builder
+    .appName("dse-cluster-migration")
+    .enableHiveSupport()
+    .getOrCreate()
 
-  // A SparkContext
-  val sc = new SparkContext(conf)
+  var conf = spark.sparkContext.getConf
+
 
   var clusterHostOne        = conf.get("spark.dse.cluster.migration.fromClusterHost", null)
   var clusterHostTwo        = conf.get("spark.dse.cluster.migration.toClusterHost", null)
@@ -24,25 +27,27 @@ object MigrateTable extends App {
   var touser                = conf.get("spark.dse.cluster.migration.touser", null)
   var topassword            = conf.get("spark.dse.cluster.migration.topassword", null)
 
-  var connectorToClusterOne : CassandraConnector = _ ;
-  var connectorToClusterTwo : CassandraConnector  = _;
+  var connectorToClusterOne : CassandraConnector = _
+  var connectorToClusterTwo : CassandraConnector  = _
 
-  if (fromuser != null && frompassword!= null) {
-    connectorToClusterOne = CassandraConnector(sc.getConf.set("spark.cassandra.connection.host", clusterHostOne).set("spark.cassandra.auth.username", fromuser).set("spark.cassandra.auth.password", frompassword))
+  import spark.implicits._
+
+  if (fromuser != null && frompassword != null) {
+    connectorToClusterOne = CassandraConnector(spark.sparkContext.getConf.set("spark.cassandra.connection.host", clusterHostOne).set("spark.cassandra.auth.username", fromuser).set("spark.cassandra.auth.password", frompassword))
   }else{
-    connectorToClusterOne = CassandraConnector(sc.getConf.set("spark.cassandra.connection.host", clusterHostOne))
+    connectorToClusterOne = CassandraConnector(spark.sparkContext.getConf.set("spark.cassandra.connection.host", clusterHostOne))
   }
-  if (touser != null && topassword!= null) {
-    connectorToClusterTwo = CassandraConnector(sc.getConf.set("spark.cassandra.connection.host", clusterHostTwo).set("spark.cassandra.auth.username", touser).set("spark.cassandra.auth.password", topassword))
+  if (touser != null && topassword != null) {
+    connectorToClusterTwo = CassandraConnector(spark.sparkContext.getConf.set("spark.cassandra.connection.host", clusterHostTwo).set("spark.cassandra.auth.username", touser).set("spark.cassandra.auth.password", topassword))
   }else{
-    connectorToClusterTwo = CassandraConnector(sc.getConf.set("spark.cassandra.connection.host", clusterHostTwo))
+    connectorToClusterTwo = CassandraConnector(spark.sparkContext.getConf.set("spark.cassandra.connection.host", clusterHostTwo))
   }
 
 
   val rddFromClusterOne = {
     // Sets connectorToClusterOne as default connection for everything in this code block
     implicit val c = connectorToClusterOne
-    sc.cassandraTable(keyspace,table)
+    spark.sparkContext.cassandraTable(keyspace,table)
   }
 
   {
