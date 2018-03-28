@@ -30,7 +30,7 @@ public class MigUIApplication extends Application<MigUIConfig> {
         dse.start();
 
 
-        SparkResource sparkResource= new SparkResource(dse);
+        SparkResource sparkResource= new SparkResource(dse, migUIConfig);
         environment.jersey().register(sparkResource);
     }
 }

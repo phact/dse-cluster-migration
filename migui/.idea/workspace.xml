@@ -72,6 +72,7 @@
             <state relative-caret-position="306">
               <caret line="13" column="33" lean-forward="false" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
               <folding>
+                <element signature="e#398#399#0" expanded="true" />
                 <element signature="e#429#430#0" expanded="true" />
                 <element signature="e#477#478#0" expanded="true" />
                 <element signature="e#517#518#0" expanded="true" />
@@ -107,6 +108,22 @@
                 <element signature="e#1687#1688#0" expanded="true" />
                 <element signature="e#1745#1746#0" expanded="true" />
                 <element signature="e#1785#1786#0" expanded="true" />
+                <element signature="e#2611#2612#0" expanded="true" />
+                <element signature="e#2640#2641#0" expanded="true" />
+                <element signature="e#2684#2685#0" expanded="true" />
+                <element signature="e#2720#2721#0" expanded="true" />
+                <element signature="e#2757#2758#0" expanded="true" />
+                <element signature="e#2790#2791#0" expanded="true" />
+                <element signature="e#2842#2843#0" expanded="true" />
+                <element signature="e#2886#2887#0" expanded="true" />
+                <element signature="e#2921#2922#0" expanded="true" />
+                <element signature="e#2952#2953#0" expanded="true" />
+                <element signature="e#3000#3001#0" expanded="true" />
+                <element signature="e#3040#3041#0" expanded="true" />
+                <element signature="e#3079#3080#0" expanded="true" />
+                <element signature="e#3114#3115#0" expanded="true" />
+                <element signature="e#3170#3171#0" expanded="true" />
+                <element signature="e#3218#3219#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -118,8 +135,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="TestNG Test Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>DsePrid</find>
+    </findStrings>
   </component>
   <component name="GradleLocalSettings">
     <option name="modificationStamps">
@@ -141,6 +164,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/datastax/powertools/mgui/MigUIConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/datastax/powertools/mgui/managed/Dse.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/datastax/powertools/mgui/resources/SparkResource.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/datastax/powertools/migui/MigUIApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/datastax/powertools/migui/MigUIConfig.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/datastax/powertools/migui/resources/SparkResourceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/datastax/powertools/migui/resources/SparkResource.java" />
       </list>
     </option>
@@ -237,6 +263,12 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.datastax.powertools.migui.resources" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.datastax.powertools.mgui.resources" />
       <recent name="com.datastax.powertools.mgui.managed" />
@@ -528,6 +560,16 @@
       <envs />
       <method />
     </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="TestNG.SparkResourceTest.testSubmitSparkJob" />
+      <item index="1" class="java.lang.String" itemvalue="TestNG.SparkResourceTest.testDSEFS" />
+    </list>
+    <recent_temporary>
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="TestNG.SparkResourceTest.testDSEFS" />
+        <item index="1" class="java.lang.String" itemvalue="TestNG.SparkResourceTest.testSubmitSparkJob" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SbtLocalSettings">
     <option name="modificationStamps">
@@ -560,6 +602,38 @@
       <updated>1522099464964</updated>
     </task>
     <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="SparkResourceTest_testDSEFS - 2018.03.27 at 14h 19m 22s.xml">
+      <configuration name="SparkResourceTest.testDSEFS" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="SparkResourceTest_testDSEFS - 2018.03.27 at 14h 19m 55s.xml">
+      <configuration name="SparkResourceTest.testDSEFS" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="SparkResourceTest_testDSEFS - 2018.03.27 at 14h 20m 09s.xml">
+      <configuration name="SparkResourceTest.testDSEFS" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="SparkResourceTest_testDSEFS - 2018.03.27 at 14h 20m 51s.xml">
+      <configuration name="SparkResourceTest.testDSEFS" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="SparkResourceTest_testDSEFS - 2018.03.27 at 15h 34m 30s.xml">
+      <configuration name="SparkResourceTest.testDSEFS" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="SparkResourceTest_testSubmitSparkJob - 2018.03.27 at 13h 49m 48s.xml">
+      <configuration name="SparkResourceTest.testSubmitSparkJob" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="SparkResourceTest_testSubmitSparkJob - 2018.03.27 at 13h 50m 34s.xml">
+      <configuration name="SparkResourceTest.testSubmitSparkJob" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="SparkResourceTest_testSubmitSparkJob - 2018.03.27 at 13h 50m 46s.xml">
+      <configuration name="SparkResourceTest.testSubmitSparkJob" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="SparkResourceTest_testSubmitSparkJob - 2018.03.27 at 14h 01m 28s.xml">
+      <configuration name="SparkResourceTest.testSubmitSparkJob" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="SparkResourceTest_testSubmitSparkJob - 2018.03.27 at 14h 02m 09s.xml">
+      <configuration name="SparkResourceTest.testSubmitSparkJob" configurationId="TestNG" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="1792" width="3200" height="1808" extended-state="6" />
@@ -599,8 +673,22 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/datastax/powertools/migui/resources/SparkResource.java</url>
+          <line>219</line>
+          <properties />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="10" />
+    </breakpoint-manager>
     <watches-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
@@ -637,6 +725,7 @@
         <state relative-caret-position="306">
           <caret line="13" column="33" lean-forward="false" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
           <folding>
+            <element signature="e#398#399#0" expanded="true" />
             <element signature="e#429#430#0" expanded="true" />
             <element signature="e#477#478#0" expanded="true" />
             <element signature="e#517#518#0" expanded="true" />
@@ -672,6 +761,54 @@
             <element signature="e#1687#1688#0" expanded="true" />
             <element signature="e#1745#1746#0" expanded="true" />
             <element signature="e#1785#1786#0" expanded="true" />
+            <element signature="e#2611#2612#0" expanded="true" />
+            <element signature="e#2640#2641#0" expanded="true" />
+            <element signature="e#2684#2685#0" expanded="true" />
+            <element signature="e#2720#2721#0" expanded="true" />
+            <element signature="e#2757#2758#0" expanded="true" />
+            <element signature="e#2790#2791#0" expanded="true" />
+            <element signature="e#2842#2843#0" expanded="true" />
+            <element signature="e#2886#2887#0" expanded="true" />
+            <element signature="e#2921#2922#0" expanded="true" />
+            <element signature="e#2952#2953#0" expanded="true" />
+            <element signature="e#3000#3001#0" expanded="true" />
+            <element signature="e#3040#3041#0" expanded="true" />
+            <element signature="e#3079#3080#0" expanded="true" />
+            <element signature="e#3114#3115#0" expanded="true" />
+            <element signature="e#3170#3171#0" expanded="true" />
+            <element signature="e#3218#3219#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/datastax/cassandra/dse-driver/1.1.0/dse-driver-1.1.0.jar!/com/datastax/driver/dse/DseSession.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/datastax/powertools/migui/managed/Dse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="26" column="11" lean-forward="false" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
+          <folding>
+            <element signature="e#383#384#0" expanded="true" />
+            <element signature="e#413#414#0" expanded="true" />
+            <element signature="e#451#452#0" expanded="true" />
+            <element signature="e#481#482#0" expanded="true" />
           </folding>
         </state>
       </provider>

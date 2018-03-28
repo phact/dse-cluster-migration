@@ -120,6 +120,57 @@ public class MigUIConfig extends Configuration{
 
     @NotEmpty
     @JsonProperty
+    private String toUser = "";
+
+
+    @NotEmpty
+    @JsonProperty
+    private String toPassword = "";
+
+
+    @NotEmpty
+    @JsonProperty
+    private String fromUser = "";
+
+
+    public String getToUser() {
+        return toUser;
+    }
+
+    public void setToUser(String toUser) {
+        this.toUser = toUser;
+    }
+
+    public String getToPassword() {
+        return toPassword;
+    }
+
+    public void setToPassword(String toPassword) {
+        this.toPassword = toPassword;
+    }
+
+    public String getFromUser() {
+        return fromUser;
+    }
+
+    public void setFromUser(String fromUser) {
+        this.fromUser = fromUser;
+    }
+
+    public String getFromPassword() {
+        return fromPassword;
+    }
+
+    public void setFromPassword(String fromPassword) {
+        this.fromPassword = fromPassword;
+    }
+
+    @NotEmpty
+    @JsonProperty
+    private String fromPassword = "";
+
+    @NotEmpty
+    @JsonProperty
     private Enum<SourceType> fromType = SourceType.DSE;
 
     private enum SourceType{
