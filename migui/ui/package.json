@@ -4,7 +4,7 @@
   "description": "React/Redux ui for Migration GUI",
   "main": "src/js/index.js",
   "scripts": {
-    "build": "webpack --config webpack.config.js",
+    "dev": "webpack --config webpack.config.js",
     "prod": "webpack --config webpack.production.config.js"
   },
   "author": "Sebastián Estévez",
