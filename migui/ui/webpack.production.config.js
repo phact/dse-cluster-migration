@@ -22,7 +22,7 @@ module.exports = {
         ]
     },
     output: {
-        path: __dirname + '/dist',
+        path: __dirname + '../src/main/resources/assets',
         filename: 'index.min.js'
     },
     plugins: [

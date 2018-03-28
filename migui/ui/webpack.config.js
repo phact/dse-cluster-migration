@@ -1,12 +1,11 @@
 var path = require('path');
 var webpack = require('webpack');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     devtool: '#eval-cheap-module-source-map',
     entry: {
         bundle: [
-            'webpack-dev-server/client',
-            'webpack/hot/only-dev-server',
             './src/js/index',
             './src/html/index'
         ],
@@ -16,19 +15,16 @@ module.exports = {
         ]
     },
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.join(__dirname, '../target/classes/assets'),
         filename: '[name].js',
         publicPath: '/',
         pathinfo: true
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.DefinePlugin({
-            __MOCK__: JSON.stringify(JSON.parse(process.env.MOCK || 'false')),
-            'process.env': {
-                BUILD_VERSION: JSON.stringify('WebPack Dev Server')
-            }
-        }),
+        new CopyWebpackPlugin([
+            {from: './src/bootstrap.min.css'},
+            {from: './src/favicon.ico'}
+        ]),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             filename: 'vendor.js'

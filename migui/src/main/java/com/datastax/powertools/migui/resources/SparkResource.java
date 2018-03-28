@@ -20,7 +20,7 @@ import javax.ws.rs.core.MediaType;
  * Created by sebastianestevez on 3/26/18.
  */
 
-@Path("/api/v0/migui")
+@Path("/v0/migui")
 public class SparkResource {
 
     private final Dse dse;

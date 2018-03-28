@@ -1,38 +1,45 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import AppBar from 'material-ui/AppBar';
+import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
+import IconButton from 'material-ui/IconButton';
+import MenuIcon from 'material-ui-icons/Menu';
 
-const Header = () => {
-    return (
-        <div
-            style={{
-                // borderBottom: '2px solid #20A7CA',
-                borderBottom: '2px solid #3d3d3d',
-                align: 'center',
-                // height: '43px'
-                height: '65px',
-                background: '#1d1d1d'
-            }}>
-            <img
-                // src={require('../../img/x-logo.svg')}
-                src={require('../../img/custom/tdlogo.png')}
-                style={{
-                    // height: '40px',
-                    height: '60px',
-                    verticalAlign: 'top'
-                }}
-                tabIndex={0}
-            />
-
-            <div
-                style={{
-                    color: '$medium-grey',
-                    display: 'inline-block'
-                }}
-            >
-                {/*DataStax<br/> Migration UI*/}
-            </div>
-        </div>
-    );
+const styles = {
+  root: {
+    flexGrow: 1
+  },
+  flex: {
+    flex: 1
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20
+  }
 };
 
-Header.displayName = 'Header';
-export default Header;
+function Header(props) {
+  const { classes } = props;
+  return (
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="title" color="inherit" className={classes.flex}>
+            DataStax Migration UI
+          </Typography>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
+}
+
+Header.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(Header);

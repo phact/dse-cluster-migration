@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_5">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_5" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -11,6 +11,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: com.google.guava:guava:20.0" level="project" />
     <orderEntry type="library" name="Maven: io.dropwizard:dropwizard-core:1.1.2" level="project" />
     <orderEntry type="library" name="Maven: io.dropwizard:dropwizard-util:1.1.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.0" level="project" />
@@ -92,26 +93,6 @@
     <orderEntry type="library" name="Maven: net.sourceforge.argparse4j:argparse4j:0.7.0" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty.toolchain.setuid:jetty-setuid-java:1.0.3" level="project" />
     <orderEntry type="library" name="Maven: io.dropwizard:dropwizard-assets:1.1.2" level="project" />
-    <orderEntry type="library" name="Maven: com.datastax.cassandra:dse-driver:1.1.0" level="project" />
-    <orderEntry type="library" name="Maven: com.datastax.cassandra:cassandra-driver-core:3.1.0" level="project" />
-    <orderEntry type="library" name="Maven: io.netty:netty-handler:4.0.37.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.netty:netty-buffer:4.0.37.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.netty:netty-common:4.0.37.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.netty:netty-transport:4.0.37.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.netty:netty-codec:4.0.37.Final" level="project" />
-    <orderEntry type="library" name="Maven: com.github.jnr:jnr-ffi:2.0.7" level="project" />
-    <orderEntry type="library" name="Maven: com.github.jnr:jffi:1.2.10" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: com.github.jnr:jffi:native:1.2.10" level="project" />
-    <orderEntry type="library" name="Maven: org.ow2.asm:asm:5.0.3" level="project" />
-    <orderEntry type="library" name="Maven: org.ow2.asm:asm-commons:5.0.3" level="project" />
-    <orderEntry type="library" name="Maven: org.ow2.asm:asm-analysis:5.0.3" level="project" />
-    <orderEntry type="library" name="Maven: org.ow2.asm:asm-tree:5.0.3" level="project" />
-    <orderEntry type="library" name="Maven: org.ow2.asm:asm-util:5.0.3" level="project" />
-    <orderEntry type="library" name="Maven: com.github.jnr:jnr-x86asm:1.0.2" level="project" />
-    <orderEntry type="library" name="Maven: com.github.jnr:jnr-posix:3.0.27" level="project" />
-    <orderEntry type="library" name="Maven: com.github.jnr:jnr-constants:0.9.0" level="project" />
-    <orderEntry type="library" name="Maven: com.google.guava:guava:16.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.13" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.testng:testng:6.11" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.beust:jcommander:1.64" level="project" />
     <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.17" level="project" />
@@ -124,5 +105,23 @@
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore-nio:4.4.4" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpmime:4.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.json:json:20160212" level="project" />
+    <orderEntry type="library" name="Maven: com.datastax.dse:dse-java-driver-core:1.4.1" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-handler:4.0.47.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-buffer:4.0.47.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-common:4.0.47.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-transport:4.0.47.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-codec:4.0.47.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
+    <orderEntry type="library" name="Maven: com.github.jnr:jnr-ffi:2.0.7" level="project" />
+    <orderEntry type="library" name="Maven: com.github.jnr:jffi:1.2.10" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.github.jnr:jffi:native:1.2.10" level="project" />
+    <orderEntry type="library" name="Maven: org.ow2.asm:asm:5.0.3" level="project" />
+    <orderEntry type="library" name="Maven: org.ow2.asm:asm-commons:5.0.3" level="project" />
+    <orderEntry type="library" name="Maven: org.ow2.asm:asm-analysis:5.0.3" level="project" />
+    <orderEntry type="library" name="Maven: org.ow2.asm:asm-tree:5.0.3" level="project" />
+    <orderEntry type="library" name="Maven: org.ow2.asm:asm-util:5.0.3" level="project" />
+    <orderEntry type="library" name="Maven: com.github.jnr:jnr-x86asm:1.0.2" level="project" />
+    <orderEntry type="library" name="Maven: com.github.jnr:jnr-posix:3.0.27" level="project" />
+    <orderEntry type="library" name="Maven: com.github.jnr:jnr-constants:0.9.0" level="project" />
   </component>
 </module>

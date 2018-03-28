@@ -14,7 +14,7 @@ const Footer = () => {
             <p style={{
                 color: 'grey'
             }}>
-                {/*© DataStax Inc 2018*/}
+                © DataStax Inc 2018
                 Prepared by DataStax Inc 2018
             </p>
         </div>

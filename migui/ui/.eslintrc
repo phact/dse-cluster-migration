@@ -204,7 +204,7 @@
         /**
          * disallow or enforce trailing commas
          */
-        "comma-dangle": 2,
+        "comma-dangle": 0,
 
         /**
          * disallow assignment in conditional expressions

@@ -75,11 +75,11 @@ public class MigUIConfig extends Configuration{
         this.toKeyspace = toKeyspace;
     }
 
-    public Enum<SourceType> getFromType() {
+    public String getFromType() {
         return fromType;
     }
 
-    public void setFromType(Enum<SourceType> fromType) {
+    public void setFromType(String fromType) {
         this.fromType = fromType;
     }
 
@@ -102,33 +102,28 @@ public class MigUIConfig extends Configuration{
     private Integer toPort= 9042;
 
 
-    @NotEmpty
     @JsonProperty
     private String fromTable = "";
 
-    @NotEmpty
     @JsonProperty
     private String fromKeyspace= "";
 
-    @NotEmpty
     @JsonProperty
     private String toTable = "";
 
-    @NotEmpty
     @JsonProperty
     private String toKeyspace = "";
 
-    @NotEmpty
     @JsonProperty
     private String toUser = "";
 
 
-    @NotEmpty
     @JsonProperty
     private String toPassword = "";
 
+    @JsonProperty
+    private String fromPassword = "";
 
-    @NotEmpty
     @JsonProperty
     private String fromUser = "";
 
@@ -165,16 +160,9 @@ public class MigUIConfig extends Configuration{
         this.fromPassword = fromPassword;
     }
 
-    @NotEmpty
-    @JsonProperty
-    private String fromPassword = "";
 
     @NotEmpty
     @JsonProperty
-    private Enum<SourceType> fromType = SourceType.DSE;
-
-    private enum SourceType{
-        DSE, JDBC
-    }
+    private String fromType = "DSE";
 
 }
