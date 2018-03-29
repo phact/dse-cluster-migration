@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import CreateClusterForm from './CreateClusterForm';
+import CreateClusterFormContainer from './CreateClusterForm';
 import {MuiThemeProvider,  createMuiTheme } from 'material-ui/styles';
 
 const theme = createMuiTheme({
@@ -31,7 +31,7 @@ class App extends React.Component {
                 <MuiThemeProvider theme={theme}>
                 <div>
                     <Header/>
-                    <CreateClusterForm/>
+                    <CreateClusterFormContainer/>
                     <Footer/>
                 </div>
                 </MuiThemeProvider>

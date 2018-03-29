@@ -634,7 +634,7 @@
         /**
          * disallow declaration of variables that are not used in the code
          */
-        "no-unused-vars": 2,
+        "no-unused-vars": 1,
 
         /**
          * disallow use of variables before they are defined

@@ -1,15 +1,38 @@
+import {post} from '../utils/Requests'
+import {notify} from './NavigationActions'
+
 export const ACTION_TYPES = {
-    migrate: 'MIGRATE'
+    initMigration: 'INIT_MIGRATION',
+    changeMigrationField: 'CHANGE_MIGRATION_FIELD',
+    changeScreen: 'CHANGE_SCREEN',
+    drawerToggle: 'DRAWER_TOGGLE',
+    closeSnackbar: 'CLOSE_SNACKBAR',
+    notify: 'NOTIFY',
 };
 
-const migrate = (msg) => {
-    console.log('call server');
+export function initMigration(){
     return {
-        type: ACTION_TYPES.migrate,
-        migratedState: msg
-    };
-};
+        type: ACTION_TYPES.initMigration
+    }
+}
 
-export const Actions = {
-    migrate
-};
+export function changeMigrationField(name, value){
+    return {
+        type: ACTION_TYPES.changeMigrationField,
+        key: name,
+        value: value
+    }
+}
+
+export function migrate(migrationDef){
+    return (dispatch, getState) => {
+        post({
+            url: '/api/v0/migui/submitSparkJob',
+            params: migrationDef,
+            success: function(response){
+                dispatch(notify("Migration Submitted "+response))
+            },
+            dispatch: dispatch
+        })
+    }
+}

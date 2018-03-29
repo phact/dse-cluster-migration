@@ -15,7 +15,6 @@ const Footer = () => {
                 color: 'grey'
             }}>
                 © DataStax Inc 2018
-                Prepared by DataStax Inc 2018
             </p>
         </div>
     );
