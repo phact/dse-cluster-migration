@@ -1,0 +1,4 @@
+#!/bin/bash
+set -x
+cd ebdse
+/tmp/ebdse/ebdse run type=cql yaml=test.yaml table=test keyspace=test tags=phase:main cycles=100

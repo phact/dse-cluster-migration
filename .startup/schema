@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -x
+
+RF=3
+IP=$(ifconfig | awk '/inet/ { print $2 }' | egrep -v '^fe|^127|^192|^172|::' | head -1)
+IP=${IP#addr:}
+
+if [[ $HOSTNAME == "node"* ]] ; then
+    #rightscale
+    IP=$(grep $(hostname) /etc/hosts | grep -v ext | awk '{print $1}')
+fi
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # Mac OSX
+    IP=localhost
+    RF=1
+fi
+
+cqlsh "$IP" -e "
+create keyspace if not exists test WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '"$RF"'} AND durable_writes = true;
+
+create table if not exists test.test (
+machine_id UUID,     // source machine
+sensor_name text,    // sensor name
+time timestamp,      // timestamp of collection
+sensor_value double, //
+station_id UUID,     // source location
+PRIMARY KEY (machine_id, sensor_name, time)
+) WITH CLUSTERING ORDER BY (sensor_name ASC, time DESC)
+ AND compression = { 'sstable_compression' : 'LZ4Compressor' }
+ AND compaction = {
+ 'class': 'TimeWindowCompactionStrategy',
+ 'compaction_window_size': 60,
+ 'compaction_window_unit': 'MINUTES'
+};"
