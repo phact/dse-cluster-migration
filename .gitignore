@@ -3,4 +3,4 @@ target/
 docsrc/nohup.out
 migui/ui/node_modules
 migui/ui/dist
-
+migui/.idea/workspace.xml
