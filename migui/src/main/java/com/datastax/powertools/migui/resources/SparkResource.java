@@ -233,9 +233,9 @@ public class SparkResource {
     public String cpJarToDsefs() {
 
         try {
-            //curl -L -X PUT -T logfile.txt '127.0.0.1:5598/webhdfs/v1/fs/log?op=CREATE&overwrite=true&blocksize=50000&rf=1'
+            //curl -L -X PUT -T logfile.txt '127.0.0.1:5598/webhdfs/v1/fs/logfile.txt?op=CREATE&overwrite=true&blocksize=50000&rf=1'
 
-            HttpResponse<JsonNode> request = Unirest.put("http://"+config.getToHost()+":5598/webhdfs/v1/fs/log?op=CREATE&overwrite=true")
+            HttpResponse<JsonNode> request = Unirest.put("http://"+config.getToHost()+":5598/webhdfs/v1/dse-cluster-migration-0.1.jar?op=CREATE&overwrite=true")
                     .field("parameter", "value")
                     .field("file", new File("../target/dse-cluster-migration-0.1.jar"))
                     .asJson();
