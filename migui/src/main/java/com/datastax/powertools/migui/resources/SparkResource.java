@@ -10,10 +10,11 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import java.io.File;
-import javafx.util.Pair;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -66,13 +67,34 @@ public class SparkResource {
     @GET
     @Timed
     @Path("/submitSparkJob")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Pair<String, String> submitSparkJob() {
+    public String[] submitSparkJob(@QueryParam("fromHost") String fromHost,
+                                               @QueryParam("toHost") String toHost,
+                                               @QueryParam("fromUser") String fromUser,
+                                               @QueryParam("toUser") String toUser,
+                                               @QueryParam("fromPw") String fromPw,
+                                               @QueryParam("toPw") String toPw,
+                                               @QueryParam("fromTable") String fromTable,
+                                               @QueryParam("toTable") String toTable,
+                                               @QueryParam("fromKs") String fromKs,
+                                               @QueryParam("toKs") String toKs
+                                               ) {
 
         ResultSet result = null;
         String output = "";
         try {
-            //TODO: update jar name
+            config.setFromHost(fromHost);
+            config.setToHost(toHost);
+            config.setFromUser(fromUser);
+            config.setToUser(toUser);
+            config.setFromPassword(fromPw);
+            config.setToPassword(toPw);
+            config.setFromTable(fromTable);
+            config.setToTable(toTable);
+            config.setFromKeyspace(fromKs);
+            config.setToKeyspace(toKs);
+
             String jar = "dse-cluster-migration-0.1.jar";
             String jarUrl = "'dsefs:/"+ jar +"'";
             String mem = "1024";
@@ -134,10 +156,11 @@ public class SparkResource {
             String query = buildSparkResourceManagerCall(jarUrl, mem, cores, supervise, mainClass, args, env, cp, libs, jvmOpts, props);
             result = session.execute(query);
 
-            Pair<String, String> driverStatus = null;
+            String[] driverStatus = new String[2];
             Boolean success;
             for (Row row : result) {
-                driverStatus = new Pair(row.getString(0), row.getString(1));
+                driverStatus[1] = row.getString(0);
+                driverStatus[2] = row.getString(1);
                 if (!row.getBool(2)){
                     throw new Exception("Submission failed");
                 };

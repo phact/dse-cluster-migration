@@ -4,6 +4,7 @@ export function get({url, params} = {}) {
     axios.get(url, {
         headers: {
             "accept": "application/json",
+            "content-type": "application/json",
             "cache-control": "no-cache"
         },
         params: params,

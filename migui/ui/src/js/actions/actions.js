@@ -1,4 +1,4 @@
-import {post} from '../utils/Requests'
+import {get} from '../utils/Requests'
 import {notify} from './NavigationActions'
 
 export const ACTION_TYPES = {
@@ -25,14 +25,20 @@ export function changeMigrationField(name, value){
 }
 
 export function migrate(migrationDef){
-    return (dispatch, getState) => {
-        post({
-            url: '/api/v0/migui/submitSparkJob',
-            params: migrationDef,
-            success: function(response){
-                dispatch(notify("Migration Submitted "+response))
-            },
-            dispatch: dispatch
-        })
+    if (migrationDef){
+        return (dispatch, getState) => {
+            get({
+                url: '/api/v0/migui/submitSparkJob',
+                params: migrationDef,
+                success: function(response){
+                    dispatch(notify("Migration Submitted "+response))
+                },
+                dispatch: dispatch
+            })
+        }
+    }else{
+        return {
+            type: false
+        }
     }
 }

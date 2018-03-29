@@ -169,7 +169,9 @@ class CreateClusterForm extends React.Component {
                     </Grid>
                     </div>
                     <div>
-                    <Button variant="raised" color="primary" className={classes.button}>
+                    <Button
+                        onClick={() => { this.props.migrate(this.props.migrationDef)}} variant="raised" color="primary" className={classes.button}
+                    >
                     Migrate
                     </Button>
                     </div>
@@ -190,15 +192,15 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        init: () => {
-                  dispatch(initMigration())
-              },
         changeMigrationField: (key, value) => {
-                                  dispatch(changeMigrationField(key, value))
-                              },
+            dispatch(changeMigrationField(key, value))
+        },
         migrate: (migrationDef) => {
-                     dispatch(migrate(migrationDef))
-                 }
+            dispatch(migrate(migrationDef))
+        },
+        init: () => {
+            dispatch(initMigration())
+        }
     }
 }
 
