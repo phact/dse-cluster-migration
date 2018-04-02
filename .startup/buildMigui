@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd migui/ui
+echo "------------------------UI     ----------------------"
+npm install
+npm run build
+echo "------------------------Backend----------------------"
+cd ..
+mvn clean package -DskipTests

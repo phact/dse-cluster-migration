@@ -1,3 +1,7 @@
 hugo
 schema
 runebdse
+buildSparkJob
+buildMigui
+runMigui
+#sparkSubmit

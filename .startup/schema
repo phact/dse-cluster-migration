@@ -18,6 +18,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 cqlsh "$IP" -e "
+drop keyspace test;
+
 create keyspace if not exists test WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '"$RF"'} AND durable_writes = true;
 
 create table if not exists test.test (

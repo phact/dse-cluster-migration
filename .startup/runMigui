@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -x
+
+#java -jar migui/target/migui-1.0-SNAPSHOT.jar migui/conf/migui.yaml
+cd migui
+java -jar target/migui.jar server conf/migui.yaml
+#java -cp migui/target/migui-1.0-SNAPSHOT.jar com.datastax.powertools.migui.MigUIApplication migui/conf/migui.yaml

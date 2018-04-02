@@ -104,40 +104,21 @@ public class SparkResource {
                     //phact.MigrateTable
             String args = String.format("['{{WORKER_URL}}', " +
                     "'{{USER_JAR}}', " +
-                    "'phact.MigrateTable', " +
-                    "'" +
-                    "--conf spark.dse.cluster.migration.fromClusterHost=%s " +
-                    "--conf spark.dse.cluster.migration.toClusterHost=%s " +
-                    "--conf spark.dse.cluster.migration.keyspace=%s " +
-                    "--conf spark.dse.cluster.migration.table=%s " +
-                    "--conf spark.dse.cluster.migration.newtableflag=%s " +
-                    "--conf spark.dse.cluster.migration.fromuser=%s " +
-                    "--conf spark.dse.cluster.migration.frompassword=%s " +
-                    "--conf spark.dse.cluster.migration.touser=%s " +
-                    "--conf spark.dse.cluster.migration.topassword=%s" +
-                    "'" +
-                    "]",
-                    config.getFromHost(),
-                    config.getToHost(),
-                    config.getFromKeyspace(),
-                    config.getFromTable(),
-                    true,
-                    config.getFromUser(),
-                    config.getFromPassword(),
-                    config.getToUser(),
-                    config.getToPassword()
+                    "'phact.MigrateTable'" +
+                    "]"
                     );
             String env = "{}";
             String cp = "[]";
             String libs = "[]";
-            String jvmOpts = "[" +
+            String jvmOpts = String.format("[" +
+                    //Required args
                     "'-Dspark.master=dse://?',\n" +
                     "'-Dspark.cassandra.connection.factory=com.datastax.bdp.spark.DseCassandraConnectionFactory',\n" +
                     "'-Dspark.hadoop.dse.client.configuration.impl=com.datastax.bdp.transport.client.HadoopBasedClientConfiguration',\n" +
                     "'-Dspark.cassandra.sql.pushdown.additionalClasses=org.apache.spark.sql.cassandra.DsePredicateRules,org.apache.spark.sql.cassandra.SolrPredicateRules',\n" +
                     "'-Dspark.shuffle.service.enabled=true',\n" +
                     "'-Dspark.extraListeners=com.datastax.bdp.spark.reporting.DseSparkListener',\n" +
-                    "'-Dspark.jars=dsefs:/test.jar',\n" +
+                    "'-Dspark.jars=dsefs:/%s',\n" +
                     "'-Dspark.app.name=com.datastax.dse.demo.loss.Spark10DayLoss',\n" +
                     "'-Dspark.rpc.askTimeout=10',\n" +
                     "'-Dspark.cassandra.auth.conf.factory=com.datastax.bdp.spark.DseAuthConfFactory',\n" +
@@ -150,8 +131,33 @@ public class SparkResource {
                     "'-Dspark.ui.confidentialKeys=token,password',\n" +
                     "'-Dspark.sql.hive.metastore.sharedPrefixes=com.typesafe.scalalogging,com.datastax.driver,com.datastax.bdp.hadoop.hive.metastore.CassandraClientManager,com.datastax.bdp.hadoop.hive.metastore.CassandraClientConfiguration',\n" +
                     "'-Dspark.sql.catalogImplementation=hive',\n" +
-                    "'-Dspark.cassandra.connection.host=127.0.0.1'\n" +
-                    "]";
+                    "'-Dspark.cassandra.connection.host=127.0.0.1',\n" +
+                    //Args for the migration job
+                    "'-Dspark.dse.cluster.migration.fromClusterHost=%s',\n" +
+                    "'-Dspark.dse.cluster.migration.toClusterHost=%s',\n" +
+                    "'-Dspark.dse.cluster.migration.fromKeyspace=%s',\n" +
+                    "'-Dspark.dse.cluster.migration.fromTable=%s',\n" +
+                    "'-Dspark.dse.cluster.migration.toKeyspace=%s',\n" +
+                    "'-Dspark.dse.cluster.migration.toTable=%s',\n" +
+                    "'-Dspark.dse.cluster.migration.newtableflag=%s',\n" +
+                    "'-Dspark.dse.cluster.migration.fromuser=%s',\n" +
+                    "'-Dspark.dse.cluster.migration.frompassword=%s',\n" +
+                    "'-Dspark.dse.cluster.migration.touser=%s',\n" +
+                    "'-Dspark.dse.cluster.migration.topassword=%s'\n" +
+                    "]",
+                    jar,
+                    config.getFromHost(),
+                    config.getToHost(),
+                    config.getFromKeyspace(),
+                    config.getFromTable(),
+                    config.getToKeyspace(),
+                    config.getToTable(),
+                    true,
+                    config.getFromUser(),
+                    config.getFromPassword(),
+                    config.getToUser(),
+                    config.getToPassword()
+            );
             String props = "{}";
             String query = buildSparkResourceManagerCall(jarUrl, mem, cores, supervise, mainClass, args, env, cp, libs, jvmOpts, props);
             result = session.execute(query);
@@ -159,8 +165,8 @@ public class SparkResource {
             String[] driverStatus = new String[2];
             Boolean success;
             for (Row row : result) {
-                driverStatus[1] = row.getString(0);
-                driverStatus[2] = row.getString(1);
+                driverStatus[0] = row.getString(0);
+                driverStatus[1] = row.getString(1);
                 if (!row.getBool(2)){
                     throw new Exception("Submission failed");
                 };
@@ -235,13 +241,26 @@ public class SparkResource {
         try {
             //curl -L -X PUT -T logfile.txt '127.0.0.1:5598/webhdfs/v1/fs/logfile.txt?op=CREATE&overwrite=true&blocksize=50000&rf=1'
 
-            HttpResponse<JsonNode> request = Unirest.put("http://"+config.getToHost()+":5598/webhdfs/v1/dse-cluster-migration-0.1.jar?op=CREATE&overwrite=true")
+            File jarFile = new File("../target/dse-cluster-migration-0.1.jar");
+
+            HttpResponse<JsonNode> request = Unirest.put("http://" + config.getToHost() + ":5598/webhdfs/v1/dse-cluster-migration-0.1.jar?op=CREATE&overwrite=true")
                     .field("parameter", "value")
-                    .field("file", new File("../target/dse-cluster-migration-0.1.jar"))
+                    .field("file", jarFile)
                     .asJson();
 
             String result = request.getBody().toString();
+            int statusCode = request.getStatus();
+            if (statusCode == 307){
+                String location = request.getHeaders().get("Location").get(0);
+                request = Unirest.put(location)
+                        .field("parameter", "value")
+                        .field("file", jarFile)
+                        .asJson();
+                result = request.getBody().toString();
 
+            }else {
+                return null;
+            }
             return result;
         }catch (Exception e){
             System.out.println(e.toString());

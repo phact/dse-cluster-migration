@@ -1,7 +1,7 @@
 package phact 
 
 import com.datastax.spark.connector._
-import com.datastax.spark.connector.cql.CassandraConnector
+import com.datastax.spark.connector.cql.{CassandraConnector, TableDef}
 import org.apache.spark.sql.{SaveMode, SparkSession}
 import org.apache.spark.sql.cassandra._
 
@@ -19,8 +19,10 @@ object MigrateTable extends App {
 
   var clusterHostOne        = conf.get("spark.dse.cluster.migration.fromClusterHost", null)
   var clusterHostTwo        = conf.get("spark.dse.cluster.migration.toClusterHost", null)
-  var keyspace              = conf.get("spark.dse.cluster.migration.keyspace", null)
-  var table                 = conf.get("spark.dse.cluster.migration.table", null)
+  var fromKeyspace          = conf.get("spark.dse.cluster.migration.fromKeyspace", null)
+  var fromTable             = conf.get("spark.dse.cluster.migration.fromTable", null)
+  var toKeyspace            = conf.get("spark.dse.cluster.migration.toKeyspace", fromKeyspace)
+  var toTable               = conf.get("spark.dse.cluster.migration.toTable", fromTable)
   var newTableFlag          = conf.get("spark.dse.cluster.migration.newtableflag", "false").toBoolean
   var fromuser              = conf.get("spark.dse.cluster.migration.fromuser", null)
   var frompassword          = conf.get("spark.dse.cluster.migration.frompassword", null)
@@ -47,16 +49,22 @@ object MigrateTable extends App {
   val rddFromClusterOne = {
     // Sets connectorToClusterOne as default connection for everything in this code block
     implicit val c = connectorToClusterOne
-    spark.sparkContext.cassandraTable(keyspace,table)
+    spark.sparkContext.cassandraTable(fromKeyspace,fromTable)
   }
 
   {
     //Sets connectorToClusterTwo as the default connection for everything in this code block
     implicit val c = connectorToClusterTwo
     if (newTableFlag) {
-      rddFromClusterOne.saveAsCassandraTable(keyspace, table)
+      var tableDef = TableDef(toKeyspace,toTable, rddFromClusterOne.tableDef.partitionKey, rddFromClusterOne.tableDef.clusteringColumns, rddFromClusterOne.tableDef.regularColumns, rddFromClusterOne.tableDef.indexes, false)
+      //rddFromClusterOne.saveAsCassandraTable(keyspace, table)
+      //rddFromClusterOne.saveAsCassandraTable(keyspace, table, SomeColumns(rddFromClusterOne.selectedColumnRefs.mkString(",")))
+      rddFromClusterOne.saveAsCassandraTableEx(tableDef)
     } else {
-      rddFromClusterOne.saveToCassandra(keyspace, table)
+      rddFromClusterOne.saveToCassandra(toKeyspace, toTable)
     }
   }
+
+  spark.stop()
+  sys.exit(0)
 }

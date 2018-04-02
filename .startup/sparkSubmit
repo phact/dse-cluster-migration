@@ -1,0 +1,5 @@
+#!/bin/bash
+
+set -x 
+
+dse spark-submit --class phact.MigrateTable --conf spark.dse.cluster.migration.fromClusterHost='127.0.0.1' --conf spark.dse.cluster.migration.toClusterHost='localhost' --conf spark.dse.cluster.migration.fromKeyspace='test' --conf spark.dse.cluster.migration.fromTable='test' --conf spark.dse.cluster.migration.toTable='test2' --conf spark.dse.cluster.migration.newtableflag='true' target/dse-cluster-migration-0.1.jar
