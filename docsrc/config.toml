@@ -1,5 +1,5 @@
 languageCode = "en-us"
-title = "Asset Name"
+title = "Migration UI"
 theme = "hugo-material-docs"
 metadataformat = "yaml"
 canonifyurls = true
@@ -8,7 +8,7 @@ baseUrl = "/"
 disableKinds = ["taxonomy","taxonomyTerm"]
 
 [params]
-	description = "Asset Name"
+	description = "Migration UI"
 
 	logo = "images/asset-hub.svg"
 	favicon = "/images/asset-hub.png"
@@ -29,9 +29,17 @@ disableKinds = ["taxonomy","taxonomyTerm"]
 
 
 [[menu.main]]
-	name   = "Asset Name"
+	name   = "Introduction"
 	url    = "/"
 	weight = 10
+[[menu.main]]
+	name   = "Migration UI"
+	url    = "/"
+	weight = 20
+[[menu.main]]
+	name   = "Che"
+	url    = "/"
+	weight = 30
 [[menu.main]]
     name   = "Build and Run"
     url    = "buildandrun/"
