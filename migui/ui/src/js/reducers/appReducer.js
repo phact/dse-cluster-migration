@@ -6,8 +6,8 @@ export const appReducer = (oldState, action) => {
         case ACTION_TYPES.initMigration: {
             return {
                 migrationDef: {
-                    fromHost: "localhost",
-                    toHost: "localhost",
+                    fromHost: "node0",
+                    toHost: "node0",
                     fromUser: "cassandra",
                     toUser: "cassandra",
                     fromPw: "cassandra",
