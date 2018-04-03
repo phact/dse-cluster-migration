@@ -1,4 +1,21 @@
 #!/bin/bash
 set -x
+
+CYCLES=100000
+THREADS=20
+
+IP=$(ifconfig | awk '/inet/ { print $2 }' | egrep -v '^fe|^127|^192|^172|::' | head -1)
+IP=${IP#addr:}
+
+if [[ $HOSTNAME == "node"* ]] ; then
+    #rightscale
+    IP=$(grep $(hostname)_ext /etc/hosts | awk '{print $1}')
+fi
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # Mac OSX
+    IP=localhost
+fi
+
 cd ebdse
-/tmp/ebdse/ebdse run type=cql yaml=test.yaml table=test keyspace=test tags=phase:main cycles=100
+/tmp/ebdse/ebdse run type=cql yaml=test.yaml table=test keyspace=test tags=phase:main cycles=$CYCLES host=$IP threads=$THREADS
