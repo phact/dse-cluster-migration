@@ -41,6 +41,10 @@ disableKinds = ["taxonomy","taxonomyTerm"]
 	url    = "/"
 	weight = 30
 [[menu.main]]
+	name   = "Migrate Job"
+	url    = "/"
+	weight = 40
+[[menu.main]]
     name   = "Build and Run"
     url    = "buildandrun/"
     weight = 100
