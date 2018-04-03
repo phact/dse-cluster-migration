@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -x
+
+#https://nodejs.org/dist/v9.10.1/node-v9.10.1-linux-x64.tar.xz
+DL_SUFFIX=linux-x64
+NODE_VERSION=9.10.1
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # Mac OSX
+    DL_SUFFIX=darwin-x64
+fi
+
+if ! [ -x "$(command -v npm)" ] && ! [ -x "$(command -v node)" ] ; then
+ wget -P /tmp/ https://nodejs.org/dist/v"${NODE_VERSION}"/node-v"${NODE_VERSION}"-"${DL_SUFFIX}".tar.gz
+ tar -xvf /tmp/node-v"${NODE_VERSION}"-"${DL_SUFFIX}".tar.gz -C /tmp
+ sudo mv /tmp/node-v"${NODE_VERSION}"_"${DL_SUFFIX}" /usr/local/lib/nodejs/node-v"${NODE_VERSION}"
+ cat EOF >> ~/.profile
+# Nodejs
+export NODEJS_HOME=/usr/local/lib/nodejs/node-v8.9.4/bin
+export PATH=$NODEJS_HOME/bin:$PATH
+  EOF
+  . ~/.profile
+  node -v
+  npm version
+fi
