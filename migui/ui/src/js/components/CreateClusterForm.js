@@ -55,114 +55,114 @@ class CreateClusterForm extends React.Component {
                 margin="normal"
                 onChange={(e) => {
                     console.log(e.target.value)
-            this.props.changeMigrationField("fromHost", e.target.value);
+                    this.props.changeMigrationField("fromHost", e.target.value);
                 }}
                 />
-                    <TextField
+                <TextField
                     id="toHost"
                     label="To Host"
                     value={this.props.migrationDef ? this.props.migrationDef.toHost : ""}
                     className={classes.textField}
                     margin="normal"
-                    onChange={(e, v) => {
-                        this.props.changeMigrationField("toHost", v)
+                    onChange={(e) => {
+                        this.props.changeMigrationField("toHost", e.target.value)
                     }}
                 />
                     <br/>
                     </Grid>
                     <Grid>
-                    <TextField
+                <TextField
                     id="fromUser"
                     label="From User"
                     value={this.props.migrationDef ? this.props.migrationDef.fromUser : ""}
                     className={classes.textField}
-                margin="normal"
-                    onChange={(e, v) => {
-                        this.props.changeMigrationField("fromUser", v)
+                    margin="normal"
+                    onChange={(e) => {
+                        this.props.changeMigrationField("fromUser", e.target.value);
                     }}
                 />
-                    <TextField
+                <TextField
                     id="toUser"
                     label="To User"
                     value={this.props.migrationDef ? this.props.migrationDef.toUser : ""}
                     className={classes.textField}
-                margin="normal"
-                    onChange={(e, v) => {
-                        this.props.changeMigrationField("toUser", v)
+                    margin="normal"
+                    onChange={(e) => {
+                        this.props.changeMigrationField("toUser", e.target.value);
                     }}
                 />
                     <br/>
                     </Grid>
                     <Grid>
 
-                    <TextField
+                <TextField
                     id="fromPw"
                     label="From Password"
                     value={this.props.migrationDef ? this.props.migrationDef.fromPw : ""}
                     className={classes.textField}
-                margin="normal"
-                    onChange={(e, v) => {
-                        this.props.changeMigrationField("fromPw", v)
+                    margin="normal"
+                    onChange={(e) => {
+                        this.props.changeMigrationField("fromPw", e.target.value)
                     }}
                 />
 
-                    <TextField
+                <TextField
                     id="toPw"
                     label="To Password"
                     value={this.props.migrationDef ? this.props.migrationDef.toPw : ""}
                     className={classes.textField}
-                margin="normal"
-                    onChange={(e, v) => {
-                        this.props.changeMigrationField("toPw", v)
+                    margin="normal"
+                    onChange={(e) => {
+                        this.props.changeMigrationField("toPw", e.target.value)
                     }}
                 />
                     <br/>
                     </Grid>
                     <Grid>
-                    <TextField
+                <TextField
                     id="fromTable"
                     label="From Table"
                     value={this.props.migrationDef ? this.props.migrationDef.fromTable : ""}
                     className={classes.textField}
-                margin="normal"
-                    onChange={(e, v) => {
-                        this.props.changeMigrationField("fromTable", v)
+                    margin="normal"
+                    onChange={(e) => {
+                        this.props.changeMigrationField("fromTable", e.target.value)
                     }}
                 />
 
-                    <TextField
+                <TextField
                     id="toTable"
                     label="To Table"
                     value={this.props.migrationDef ? this.props.migrationDef.toTable : ""}
                     className={classes.textField}
-                margin="normal"
-                    onChange={(e, v) => {
-                        this.props.changeMigrationField("toTable", v)
+                    margin="normal"
+                    onChange={(e) => {
+                        this.props.changeMigrationField("toTable", e.target.value)
                     }}
                 />
                     <br/>
                     </Grid>
 
                     <Grid>
-                    <TextField
+                <TextField
                     id="fromKs"
                     label="From Keyspace"
                     value={this.props.migrationDef ? this.props.migrationDef.fromKs : ""}
                     className={classes.textField}
-                margin="normal"
-                    onChange={(e, v) => {
-                        this.props.changeMigrationField("fromKs", v)
+                    margin="normal"
+                    onChange={(e) => {
+                        this.props.changeMigrationField("fromKs", e.target.value)
                     }}
                 />
 
-                    <TextField
+                <TextField
                     id="toKs"
                     label="To Keyspace"
                     value={this.props.migrationDef ? this.props.migrationDef.toKs : ""}
                     className={classes.textField}
-                margin="normal"
-                    onChange={(e, v) => {
-                        this.props.changeMigrationField("toKs", v)
+                    margin="normal"
+                    onChange={(e) => {
+                        this.props.changeMigrationField("toKs", e.target.value)
                     }}
                 />
                     <br/>
