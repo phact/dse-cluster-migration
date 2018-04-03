@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source ~/.profile
 cd migui/ui
 echo "------------------------UI     ----------------------"
 npm install
