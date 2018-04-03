@@ -2,7 +2,26 @@
 
 set -x
 
+
+HOST_IP=$(ifconfig | awk '/inet/ { print $2 }' | egrep -v '^fe|^127|^192|^172|::' | head -1)
+HOST_IP=${IP#addr:}
+export IP=$HOST_IP
+
+if [[ $HOSTNAME == "node"* ]] ; then
+    #rightscale
+    HOST_IP=$(grep $(hostname)_ext /etc/hosts | awk '{print $1}')
+    export IP=$HOST_IP
+fi
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # Mac OSX
+    HOST_IP=$(docker run --net=host debian:jessie ip addr show|grep inet|grep eth0|awk '{print $2}'|awk -F'/' '{print $1}')
+    export IP=localhost
+fi
+
+echo $IP
+
 #java -jar migui/target/migui-1.0-SNAPSHOT.jar migui/conf/migui.yaml
 cd migui
-java -jar target/migui.jar server conf/migui.yaml
+nohup java -jar target/migui.jar server conf/migui.yaml &
 #java -cp migui/target/migui-1.0-SNAPSHOT.jar com.datastax.powertools.migui.MigUIApplication migui/conf/migui.yaml

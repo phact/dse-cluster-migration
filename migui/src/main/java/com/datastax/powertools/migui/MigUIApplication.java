@@ -6,6 +6,8 @@ import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
+import io.dropwizard.configuration.SubstitutingSourceProvider;
 
 /**
  * Created by sebastianestevez on 3/26/18.
@@ -20,6 +22,13 @@ public class MigUIApplication extends Application<MigUIConfig> {
     public void initialize(Bootstrap<MigUIConfig> bootstrap) {
 
         bootstrap.addBundle(new AssetsBundle("/assets/","/", "index.html"));
+
+        // Enable variable substitution with environment variables
+        bootstrap.setConfigurationSourceProvider(
+                new SubstitutingSourceProvider(bootstrap.getConfigurationSourceProvider(),
+                        new EnvironmentVariableSubstitutor(true)
+                )
+        );
 
         super.initialize(bootstrap);
     }

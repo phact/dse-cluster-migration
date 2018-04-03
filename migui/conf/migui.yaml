@@ -2,3 +2,4 @@ logging:
   level: INFO
 server:
   rootPath: /api
+toHost: ${IP:-localhost}
