@@ -21,6 +21,8 @@ fi
 
 echo $IP
 
+lsof -i:8080|grep java | awk '{print $2}' | xargs kill
+
 #java -jar migui/target/migui-1.0-SNAPSHOT.jar migui/conf/migui.yaml
 cd migui
 nohup java -jar target/migui.jar server conf/migui.yaml &
