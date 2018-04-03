@@ -5,7 +5,7 @@ import { withStyles } from 'material-ui/styles';
 import TextField from 'material-ui/TextField';
 import Grid from 'material-ui/Grid';
 import Button from 'material-ui/Button';
-import {initMigration, changeMigrationField, migrate} from "../actions/Actions";
+import {initMigration, changeMigrationField, migrate} from "../actions/actions";
 
 
 const styles = theme => ({

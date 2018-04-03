@@ -1,4 +1,4 @@
-import {ACTION_TYPES} from "../actions/Actions";
+import {ACTION_TYPES} from "../actions/actions";
 export const appReducer = (oldState, action) => {
     const state = {...oldState};
 
