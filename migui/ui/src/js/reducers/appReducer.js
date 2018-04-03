@@ -22,8 +22,8 @@ export const appReducer = (oldState, action) => {
         case ACTION_TYPES.changeMigrationField: {
             return{
             ...state,
-                selectedReference: {
-                    ...state.selectedReference,
+                migrationDef: {
+                    ...state.migrationDef,
                     [action.key]: action.value
                 }
             }
