@@ -30,4 +30,4 @@ WORKSPACE=$(python "$PWD"/.startup/create-workspace.py "$IP")
 echo $WORKSPACE
 sleep 4
 sudo mkdir -p /tmp/data/instance/data/workspaces/$WORKSPACE/datastax
-sudo cp -r "$PWD"/* /tmp/data/instance/data/workspaces/$WORKSPACE/datastax
+sudo cp -r "$PWD"/ /tmp/data/instance/data/workspaces/$WORKSPACE/datastax
