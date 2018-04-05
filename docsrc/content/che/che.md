@@ -1,9 +1,9 @@
 ---
 weight: 40
-title: Che 
+title: Che Web IDE
 menu:
   main:
-      parent: Che
+      parent: Che Web IDE
       identifier: che
       weight: 401
 ---
