@@ -37,7 +37,7 @@ disableKinds = ["taxonomy","taxonomyTerm"]
 	url    = "/"
 	weight = 20
 [[menu.main]]
-	name   = "Che"
+	name   = "Che Web IDE"
 	url    = "/"
 	weight = 30
 [[menu.main]]
