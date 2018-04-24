@@ -1,10 +1,10 @@
 # ebdse -v run type=cql yaml=baselines/iot tags=phase:schema host=dsehost
 bindings:
-  machine_id: compose Mod(<<sources:1000>>); ToHashedUUID() -> UUID
-  sensor_name: HashedLineToString(data/variable_words.txt)
+  machine_id: compose Mod(<<sources:1000>>); ToHashedUUID() -> java.util.UUID
+  sensor_name: HashedLineToString('data/variable_words.txt')
   time: ToDate()
   sensor_value: compose normal(0.0,5.0); Add(100.0) -> double
-  station_id: compose Mod(<<stations:100>>); ToHashedUUID() -> UUID
+  station_id: compose Mod(<<stations:100>>); ToHashedUUID() -> java.util.UUID
 blocks:
   - tags:
       phase: schema
